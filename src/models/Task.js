@@ -1,20 +1,20 @@
 import { Schema, model } from "mongoose";
-import mongoosePaginate from 'mongoose-paginate-v2'
+import mongoosePaginate from "mongoose-paginate-v2";
 
 const taskSchema = new Schema(
   {
     title: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     description: {
       type: String,
-      trim: true
+      trim: true,
     },
     done: {
       type: Boolean,
-      default: false
+      default: false,
     },
   },
   {

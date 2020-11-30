@@ -15,7 +15,10 @@ export const createTask = async (req, res) => {
       done: req.body.done ? req.body.done : false,
     });
 
+    // Saving the task in the Database
     const taskSaved = await task.save();
+
+    // Responding to the client
     return res.json(taskSaved);
   } catch (error) {
     res.status(500).json({
