@@ -25,3 +25,6 @@ In development
 ```
 npm run dev
 ```
+
+# More Info
+[faztweb.com](https://faztweb.com)
