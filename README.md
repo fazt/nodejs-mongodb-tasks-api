@@ -1,7 +1,12 @@
 # Tasks NodeMongoose API
 [![Discord](https://img.shields.io/discord/463752820026376202.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/mFUY4sT)
 
-This project is a rest api for managmenent Tasks.
+This project is a REST API for managmenent Tasks. Develped using:
+* Nodejs
+* Express
+* Mongodb
+* Mongoose
+* Babel (ES6+)
 
 The idea is to use this example in frontend applications.
 
