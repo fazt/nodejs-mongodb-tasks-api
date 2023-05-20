@@ -1,20 +1,28 @@
-import * as tasksCtrl from "../controllers/task.controller";
 import { Router } from "express";
+import {
+  createTask,
+  deleteAllTask,
+  deleteTask,
+  findAllDoneTasks,
+  findAllTasks,
+  findOneTask,
+  updateTask,
+} from "../controllers/task.controller.js";
 
 const router = Router();
 
-router.post("/", tasksCtrl.createTask);
+router.post("/", createTask);
 
-router.get("/", tasksCtrl.findAllTasks);
+router.get("/", findAllTasks);
 
-router.get("/done", tasksCtrl.findAllDoneTasks);
+router.get("/done", findAllDoneTasks);
 
-router.get("/:id", tasksCtrl.findOneTask);
+router.get("/:id", findOneTask);
 
-router.put("/:id", tasksCtrl.updateTask);
+router.put("/:id", updateTask);
 
-router.delete("/:id", tasksCtrl.deleteTask);
+router.delete("/:id", deleteTask);
 
-router.delete("/", tasksCtrl.deleteAllTask);
+router.delete("/", deleteAllTask);
 
 export default router;

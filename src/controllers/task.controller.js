@@ -1,5 +1,5 @@
-import { Task } from "../models";
-import { getPagination } from "../libs/getPagination";
+import { Task } from "../models/index.js";
+import { getPagination } from "../libs/getPagination.js";
 
 export const createTask = async (req, res) => {
   try {
@@ -78,16 +78,15 @@ export const updateTask = async (req, res) => {
 
   try {
     const updatedTask = await Task.findByIdAndUpdate(id, req.body, {
-      useFindAndModify: false,
+      new: true,
     });
 
-    if (!updatedTask) {
-      res.status(404).json({
+    if (!updatedTask)
+      return res.status(404).json({
         message: `Cannot update tutorial with ${id}. Maybe the tutorial does not exists`,
       });
-    } else {
-      res.json({ message: "Tutorial was updated successfully" });
-    }
+
+    return res.json(updatedTask);
   } catch (error) {
     res.status(500).json({
       message: `Error updating tutorial with id ${id}`,
@@ -100,13 +99,12 @@ export const deleteTask = async (req, res) => {
 
   try {
     const data = await Task.findByIdAndDelete(id);
-    if (!data) {
-      res.status(404).json({
+    if (!data)
+      return res.status(404).json({
         message: `Cannot delete Task with id=${id}. Maybe the task does not exists`,
       });
-    } else {
-      res.json({ message: "Task was deleted successfully" });
-    }
+
+    return res.sendStatus(204);
   } catch (error) {
     res.status(500).json({
       message: `Could not delete Task with id = ${id}`,
@@ -117,9 +115,8 @@ export const deleteTask = async (req, res) => {
 export const deleteAllTask = async (req, res) => {
   try {
     const data = await Task.deleteMany({});
-    res.json({
-      message: `${data.deletedCount} Task were deleted Successfully`,
-    });
+    if (!data) return res.status(404).json({ message: "No tasks to delete" });
+    return res.sendStatus(204);
   } catch (error) {
     res.status(500).json({
       message:

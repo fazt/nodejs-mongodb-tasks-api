@@ -1,12 +1,9 @@
 import mongoose from "mongoose";
-import config from "./config";
+import { mongodbURL } from "./config.js";
 
 (async () => {
   try {
-    const db = await mongoose.connect(config.mongodbURL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const db = await mongoose.connect(mongodbURL);
     console.log("Database Connected", db.connection.host);
   } catch (error) {
     console.error(error);
