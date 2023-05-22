@@ -35,16 +35,12 @@ export const findAllTasks = async (req, res) => {
       ? { title: { $regex: new RegExp(title), $options: "i" } }
       : {};
 
-    const { limit, offset } = getPagination(page, size);
-
-    const data = await Task.paginate(condition, { offset, limit });
-
-    return res.json({
-      totalItems: data.totalDocs,
-      tasks: data.docs,
-      totalPages: data.totalPages,
-      currentPage: data.page - 1,
+    const tasks = await Task.paginate(condition, {
+      page: page ? parseInt(page) : 1,
+      limit: size ? parseInt(size) : 5, 
     });
+
+    return res.json(tasks);
   } catch (error) {
     res.status(500).json({
       message: error.message || "Something went wrong retrieving the tasks",

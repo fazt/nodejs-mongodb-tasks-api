@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "clean": "rimraf dist",
     "start": "node src/index.js"
   },
   "keywords": [],
@@ -22,7 +21,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22",
-    "rimraf": "^5.0.1"
+    "nodemon": "^2.0.22"
   }
 }
