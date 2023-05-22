@@ -1,4 +1,5 @@
 @api = http://localhost:3000/api/tasks
+@id = 646af04f8786dc27e82749e3
 
 ### Get Tasks
 GET {{api}}
@@ -13,10 +14,10 @@ Content-Type: application/json
 }
 
 ### Get Single Task
-GET {{api}}/6468e451ccab89700a41409d
+GET {{api}}/{{id}}
 
 ### Update
-PUT {{api}}/6468e4dbf690bcb17b4ff7aa
+PUT {{api}}/{{id}}
 Content-Type: application/json
 
 {
@@ -32,7 +33,7 @@ GET {{api}}?title=up
 GET {{api}}/done
 
 ### DELETE Single Task
-DELETE {{api}}/6468e4dbf690bcb17b4ff7aa
+DELETE {{api}}/{{id}}
 
 ### DELETE all tasks
 DELETE {{api}}
